@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Job Management System</h1>
+    <h6>Create Job Execution</h6>
+    <hr>
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+        <span th:text="${errorMessage}">Error</span>
+    </div>
+
+    <form action="#" th:action="@{/save}" th:object="${job}" method="POST" class="row g-3">
+        <div class="col-md-10">
+            <input type="text" th:field="*{name}" placeholder="Name" class="form-control">
+        </div>
+        <div class="col-md-10">
+            <input type="text" th:field="*{group}" placeholder="Group" class="form-control">
+        </div>
+        <div class="col-md-10">
+            <select class="form-select" aria-label="Default select example" th:field="*{cronExpression}" placeholder="Cron Expression">
+                <option th:value="'0/5 * * 1/1 * ? *'">A cada 5 segundos </option>
+                <option th:value="'0/30 * * 1/1 * ? *'">A cada 30 segundos </option>
+                <option th:value="'0 0/1 * 1/1 * ? *'">A cada minuto</option>
+                <option th:value="'0 0/2 * 1/1 * ? *'">A cada 2 minutos</option>
+                <option th:value="'0 0/5 * 1/1 * ? *'">A cada 5 minutos</option>
+                <option th:value="'0 0/10 * 1/1 * ? *'">A cada 10 minutos</option>
+            </select>
+        </div>
+        <div class="col-md-10">
+            <input type="text" th:field="*{description}" placeholder="Description" class="form-control">
+        </div>
+        <div class="col-md-10">
+            <input type="text" th:field="*{urlTarget}" placeholder="Url Target" class="form-control">
+        </div>
+        <div class="col-md-10">
+            <button type="submit" class="btn btn-primary">Create Job</button>
+            <a th:href="@{/}" class="btn btn-primary">Back to Job List</a>
+        </div>
+    </form>
+    <hr>
+</div>
+</body>
+</html>
