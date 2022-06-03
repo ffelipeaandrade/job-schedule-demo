@@ -40,7 +40,7 @@ public class NavigationController {
     }
     @GetMapping("/deleteExectuions")
     public String listErrorsJobs(Model model) {
-        model.addAttribute("executions", new Paged<>(Page.empty(), Paging.of(0, 0, 0)));
+        model.addAttribute("executions", new Paged<>(Page.empty(), Paging.of(0, 1, 0)));
         jobSchedulingService.removeAllExecutions();
         return Routes.EXECUTION_JOB;
     }
