@@ -36,7 +36,7 @@ public class HttpJobDefinition extends JobDefinition {
             executionEntity.setStatusExecution(JobStatusExecution.SUCCESS);
             executionEntity.setMessage(HttpStatus.OK.name());
         } catch (HttpStatusCodeException e){
-            logger.error("Erro na execução do Job: {}", context.getJobDetail().getKey());
+            logger.error("Erro na execução do Job: {}", (String) context.getJobDetail().getJobDataMap().get("jobId"));
             executionEntity.setStatusExecution(JobStatusExecution.FAIL);
             executionEntity.setMessage(e.getMessage());
         }
