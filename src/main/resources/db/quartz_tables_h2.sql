@@ -5,7 +5,11 @@
 -- In your Quartz properties file, you'll need to set
 -- org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.StdJDBCDelegate
 
-
+CREATE TABLE QRTZ_CALENDARS (
+  SCHED_NAME VARCHAR(120) NOT NULL,
+  CALENDAR_NAME VARCHAR (200)  NOT NULL ,
+  CALENDAR IMAGE NOT NULL
+);
 
 CREATE TABLE QRTZ_CRON_TRIGGERS (
   SCHED_NAME VARCHAR(120) NOT NULL,

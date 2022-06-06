@@ -32,7 +32,7 @@ public class HttpJobDefinition extends JobDefinition {
 
         try {
             String urlTarget =  (String) context.getJobDetail().getJobDataMap().get("urlTarget");
-            restTemplate.getForEntity(urlTarget, Object.class);
+            restTemplate.postForEntity(urlTarget, null, Object.class);
             executionEntity.setStatusExecution(JobStatusExecution.SUCCESS);
             executionEntity.setMessage(HttpStatus.OK.name());
         } catch (HttpStatusCodeException e){
